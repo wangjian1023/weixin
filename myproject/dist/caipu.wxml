@@ -1,0 +1,10 @@
+
+  <view class="background" style="height: {{height}}px; width: {{width}}px;">
+    <view class="background">
+        <view class="section">
+          <input placeholder="今天想吃什么菜啦？" focus="{{focus}}" config-type="search" class="input"/>
+        </view>
+        
+    </view>
+
+  </view>

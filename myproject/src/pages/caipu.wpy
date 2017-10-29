@@ -1,0 +1,220 @@
+<style lang = "less">
+.slide-image {
+  width: 100%;
+  height: 13rem;
+  box-shadow: 0px -40px 20px #7a7171 inset;
+}
+
+.section {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray; //线高度颜色
+  /* border-radius: 0.935rem; */
+  background-color: white;
+  height: 30px;
+  font-size: 15px;
+  justify-content: space-between;
+}
+
+.photo {
+  display: flex;
+  height: 25px;
+  width: 25px;
+  align-content: center;
+  padding: 5px;
+
+}
+
+.row {
+  display: flex;
+  justify-content: row;
+  align-items: center;
+  margin-top: 10px;
+
+  /* justify-content: flex-start; */
+}
+.row1 {
+  display: flex;
+  justify-content: row;
+  align-items: center;
+
+} 
+
+.bottom {
+  /* position: absolute; */
+  bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: #F8F8F8;
+  margin-top: 30px;
+  color: black;
+}
+
+.background {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  background-color: #C0C0C0;
+  align-items: center;
+  justify-content: center;
+}
+/* .find {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 40rpx 20rpx;
+}
+.product {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+} */
+
+.border {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.six {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85px;
+  width: 180px;
+  flex-wrap: nowrap;
+}
+
+.end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent
+}
+</style>
+
+<template>
+<view>
+  <view class="background">
+    <view class="section">
+      <input placeholder="想吃什么菜啦？" focus="{{focus}}" config-type="search" class="input" />
+      <image class="photo" src="{{search}}"></image>
+    </view>
+  </view>
+
+  <view class="row" >
+  <text style="color: red" >|</text>
+  <text>今日推荐</text>
+  </view>
+
+  <view class='swiper' >
+      <swiper class='slide-image' autoplay='true' indicator-dots="{{indicatorDots}}" indicator-color = "{{color}}" indicator-active-color = "{{color1}}" interval='3000' duration='1000' circular='true' current='{{}}'>
+        <block wx:for='{{imgUrls}}' wx:key='index'>
+          <swiper-item>
+            <image class='slide-image' src='{{item}}' />
+          </swiper-item>
+        </block>
+      </swiper>
+  </view>
+
+  <view class="border">
+      <view class="column six" style="background-color:#b8b10e">
+        <image class="photo" src="{{time}}" />
+        <text>最新菜谱</text>
+      </view>
+      <view class="column six" style="background-color:#FF9933">
+        <image class="photo" src="{{hot}}" />
+        <text>最热菜谱</text>
+      </view>
+  </view>
+  <view class="border">
+      <view class="column six" style="background-color:#99FF99">
+        <image class="photo" src="{{king}}" />
+        <text>推荐菜谱</text>
+      </view>
+      <view class="column six" style="background-color:#99FFFF">
+        <image class="photo" src="{{eat}}" />
+        <text>家常菜谱</text>
+      </view>
+  </view>
+  <view class="row1">
+  <view class="row" >
+  <text style="color: red" >|</text>
+  <text>最新上线菜谱</text>
+  </view>
+  <text class="end" style="color: red">更多>></text>
+  </view>
+    <view class="bottom row">
+      <text>唯爱与</text> 
+      <text style="color:red">美食</text>
+      <text>不可辜负</text>
+    </view>
+</view>  
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '爱心套餐'
+  }
+  data = {
+    src: '',
+    imgUrls: [
+      'http://mpic.tiankong.com/7fc/beb/7fcbebebe7903a0e6c865ef9aecc9740/640.jpg@300h',
+      'http://mpic.tiankong.com/209/66a/20966a26fff3f79004e3d262055517b0/640.jpg@300h',
+      'http://mpic.tiankong.com/1b9/4bc/1b94bc58139d264ad0c6d401b90eca7f/640.jpg@300h',
+      'http://mpic.tiankong.com/66e/4aa/66e4aaf334f8f37f0dbc59acff7bf683/430-3831.jpg@300h'
+    ],
+    describe: '',
+    content: null,
+    indicatorDots: true,
+    color: 'white',
+    color1: 'red',
+    height: 0,
+    width: 0,
+    search: '../image/check.png',
+    king: '../image/king.png',
+    eat: '../image/eat.png',
+    hot: '../image/hot.png',
+    time: '../image/time.png'
+  }
+  methods = {
+
+  }
+  onLoad() {
+    let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
+  }
+}
+</script>
