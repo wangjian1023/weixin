@@ -1,4 +1,31 @@
 
-  <view class="back">
+  <view>
+    <view class="background">
+      <view class="section">
+        <input placeholder="搜索菜谱、食材" focus="{{focus}}" config-type="search" class="input"/>
+        <image class="photo" src="{{search}}"/>
+      </view>
+      <view class="row" style="color:red"><text>搜索</text></view>
+    </view>
+
+    <view class="fuck">
+      <text>大家都在搜</text>
+    </view>
+
+    <view class="figure">
+      <text style="color:#0066CC">广式莲蓉月饼</text>
+    </view>
+    <view class="figure" style="width:220px">
+      <text style="color:#CC33CC">可可草莓裸蛋糕【微体兔菜谱】</text>
+    </view>
+    <view class="figure" style="width:150px">
+      <text style="color:#9999CC">软绵清爽-棉花糕</text>
+    </view>
+    <view class="figure" style="width:230px">
+      <text style="color:#FF0033">黑椒杏鲍菇炒鸡柳 #厨房治愈系</text>
+    </view>
+    <view class="figure" style="width:150px">
+      <text style="color:#003399">一时半刻 | 糖醋小排</text>
+    </view>
 
   </view>

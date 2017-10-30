@@ -11,7 +11,6 @@
   justify-content: center;
   align-items: center;
   border: 1px solid gray; //线高度颜色
-  /* border-radius: 0.935rem; */
   background-color: white;
   height: 30px;
   font-size: 15px;
@@ -32,13 +31,16 @@
   justify-content: row;
   align-items: center;
   margin-top: 10px;
+  width: 100%;
 
   /* justify-content: flex-start; */
 }
-.row1 {
+.between {
   display: flex;
-  justify-content: row;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+
 
 } 
 
@@ -63,20 +65,6 @@
   align-items: center;
   justify-content: center;
 }
-/* .find {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 40rpx 20rpx;
-}
-.product {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-} */
 
 .border {
   display: flex;
@@ -110,6 +98,43 @@
   justify-content: flex-end;
   align-items: center;
 }
+.find {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40rpx 20rpx;
+}
+.product {
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+  background-color: #E8E8E8;
+  justify-content: center;
+
+}
+.recPhoto {
+  border-radius: 5px;
+  height: 230px;
+  width: 100%;
+}
+
+.recName {
+  display: flex;
+  font-size: 15px;
+  height: 30px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.recommend {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 250px;
+  width: 100%;
+}
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -127,10 +152,9 @@
   </view>
 
   <view class="row" >
-  <text style="color: red" >|</text>
-  <text>今日推荐</text>
+    <text style="color: red" >|</text>
+    <text>今日推荐</text>
   </view>
-
   <view class='swiper' >
       <swiper class='slide-image' autoplay='true' indicator-dots="{{indicatorDots}}" indicator-color = "{{color}}" indicator-active-color = "{{color1}}" interval='3000' duration='1000' circular='true' current='{{}}'>
         <block wx:for='{{imgUrls}}' wx:key='index'>
@@ -161,13 +185,24 @@
         <text>家常菜谱</text>
       </view>
   </view>
-  <view class="row1">
-  <view class="row" >
-  <text style="color: red" >|</text>
-  <text>最新上线菜谱</text>
+  
+  <view class="between row">
+    <view>  
+      <text style="color: red" >|</text>
+      <text>最新上线菜谱</text>
+    </view>  
+      <text @tap ="list" class="end" style="color: red">更多>></text>
   </view>
-  <text class="end" style="color: red">更多>></text>
+
+  <view class="find product">
+        <view  @tap = "display" class="recommend " wx:for="{{content}}" wx:key="index" id="{{index}}">
+          <image class="recPhoto" src="{{item.recPhoto}}" mode="scaleToFill" />
+        <view class="product">  
+          <text class="recName">{{item.recName}}</text>
+        </view>  
+        </view>
   </view>
+
     <view class="bottom row">
       <text>唯爱与</text> 
       <text style="color:red">美食</text>
@@ -178,10 +213,11 @@
 
 <script>
 import wepy from 'wepy'
-
+import name from '../util/name.js'
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '爱心套餐'
+    navigationBarTitleText: '爱心套餐',
+    enablePullDownRefresh: 'true'
   }
   data = {
     src: '',
@@ -205,10 +241,23 @@ export default class Index extends wepy.page {
     time: '../image/time.png'
   }
   methods = {
-
+    list() {
+      wepy.navigateTo({
+        url: '../pages/list'
+      })
+    },
+    display(e) {
+      let self = this
+      let item = self.content[e.currentTarget.id]
+      console.log(item)
+      wepy.navigateTo({
+        url: `./display?recPhoto=${item.recPhoto}&recName=${item.recName}`
+      })
+    }
   }
   onLoad() {
     let self = this
+    self.content = name
     wepy.getSystemInfo({
       success(res) {
         self.height = res.windowHeight

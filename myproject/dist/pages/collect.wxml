@@ -1,4 +1,11 @@
 
-  <view class="back">
-
+<view>
+  <view class="border">
+    <view class="background">
+        <view class="section">
+          <input placeholder="搜索" focus="{{focus}}" config-type="search" class="input"/>
+        </view>
+        <image class="photo" src="{{search}}"/>
+      </view>
   </view>
+</view>

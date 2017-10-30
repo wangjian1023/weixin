@@ -8,10 +8,9 @@
   </view>
 
   <view class="row">
-  <text style="color: red">|</text>
-  <text>今日推荐</text>
+    <text style="color: red">|</text>
+    <text>今日推荐</text>
   </view>
-
   <view class="swiper">
       <swiper class="slide-image" autoplay="true" indicator-dots="{{indicatorDots}}" indicator-color="{{color}}" indicator-active-color="{{color1}}" interval="3000" duration="1000" circular="true" current="{{}}">
         <block  wx:for="{{imgUrls}}" wx:key="index">
@@ -42,13 +41,24 @@
         <text>家常菜谱</text>
       </view>
   </view>
-  <view class="row1">
-  <view class="row">
-  <text style="color: red">|</text>
-  <text>最新上线菜谱</text>
+  
+  <view class="between row">
+    <view>  
+      <text style="color: red">|</text>
+      <text>最新上线菜谱</text>
+    </view>  
+      <text bindtap="list" class="end" style="color: red">更多>></text>
   </view>
-  <text class="end" style="color: red">更多>></text>
+
+  <view class="find product">
+        <view bindtap="display" class="recommend "  wx:for="{{content}}" wx:key="index" id="{{index}}">
+          <image class="recPhoto" src="{{item.recPhoto}}" mode="scaleToFill"/>
+        <view class="product">  
+          <text class="recName">{{item.recName}}</text>
+        </view>  
+        </view>
   </view>
+
     <view class="bottom row">
       <text>唯爱与</text> 
       <text style="color:red">美食</text>

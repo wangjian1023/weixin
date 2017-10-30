@@ -1,0 +1,146 @@
+<style lang = "less">
+.section {
+  display: flex;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid gray; //线高度颜色
+  height: 30px;
+  font-size: 15px;
+  justify-content: space-between;
+  background-color: #F0F0F0;
+  margin-left: 15px;
+}
+
+.background {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+
+}
+
+.photo {
+  display: flex;
+  height: 25px;
+  width: 25px;
+  align-content: center;
+  padding: 5px;
+}
+
+.row {
+  display: flex;
+  height: 40px;
+  width: 100px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+.find {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40rpx 20rpx;
+}
+.product {
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+  background-color: #E8E8E8;
+  justify-content: center;
+
+}
+.recPhoto {
+  border-radius: 5px;
+  height: 230px;
+  width: 100%;
+}
+
+.recName {
+  display: flex;
+  font-size: 15px;
+  height: 30px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.recommend {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 250px;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent
+}
+</style>
+
+<template>
+<view>
+  <view class="background">
+      <view class="section">
+        <input placeholder="搜索菜谱、食材" focus="{{focus}}" config-type="search" class="input" />
+        <image class="photo" src="{{search}}"></image>
+      </view>
+      <view class="row" style="color:red"><text>搜索</text></view>
+  </view>
+
+  <text style="color:#B8B8B8; font-size:20px; margin-left: 15px; magin-top:10px">最新菜谱</text>
+
+  <view class="find product">
+    <view  @tap = "display" class="recommend " wx:for="{{content}}" wx:key="index" id="{{index}}">
+      <image class="recPhoto" src="{{item.recPhoto}}" mode="scaleToFill" />
+    <view class="product">  
+      <text class="recName">{{item.recName}}</text>
+    </view>  
+    </view>
+  </view>
+
+</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import name from '../util/name.js'
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '爱心套餐 ',
+    enablePullDownRefresh: 'true'
+  }
+  data = {
+    src: '',
+    search: '../image/check.png',
+    describe: '',
+    content: null
+  }
+  methods = {
+    display(e) {
+      let self = this
+      let item = self.content[e.currentTarget.id]
+      console.log(item)
+      wepy.navigateTo({
+        url: `./display?recPhoto=${item.recPhoto}&recName=${item.recName}&describe=${item.describe}`
+      })
+    }
+  }
+  onLoad() {
+    let self = this
+    self.content = name
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
+  }
+}
+</script>

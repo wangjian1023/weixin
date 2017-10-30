@@ -1,0 +1,22 @@
+'use strict';
+
+module.exports = [{
+  recName: '小土豆炖排骨',
+  recPhoto: 'http://i04.pic.sogou.com/1ab139b58f33006a'
+}, {
+  recName: '羊肉白萝卜汤',
+  recPhoto: 'http://i04.pic.sogou.com/b1cb400961f24a02'
+}, {
+  recName: '烤培根金针菇卷',
+  recPhoto: 'http://i02.pic.sogou.com/03d1234a351e628b'
+}, {
+  recName: '芒果千层蛋糕',
+  recPhoto: 'http://i04.pictn.sogoucdn.com/b67f0e350d029c5f'
+}, {
+  recName: '东北酱骨棒',
+  recPhoto: 'http://i02.pic.sogou.com/6402095241ac64e8'
+}, {
+  recName: '芝麻脆蛋卷 #MEYER.焕心厨房，唤醒美味#',
+  recPhoto: 'http://i02.pic.sogou.com/3c35f7ff8ee1df74'
+}];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5hbWUuanMiXSwibmFtZXMiOlsibW9kdWxlIiwiZXhwb3J0cyIsInJlY05hbWUiLCJyZWNQaG90byJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsT0FBT0MsT0FBUCxHQUFpQixDQUNmO0FBQ0VDLFdBQVMsUUFEWDtBQUVFQyxZQUFVO0FBRlosQ0FEZSxFQUlaO0FBQ0RELFdBQVMsUUFEUjtBQUVEQyxZQUFVO0FBRlQsQ0FKWSxFQU9aO0FBQ0RELFdBQVMsU0FEUjtBQUVEQyxZQUFVO0FBRlQsQ0FQWSxFQVVaO0FBQ0RELFdBQVMsUUFEUjtBQUVEQyxZQUFVO0FBRlQsQ0FWWSxFQWFaO0FBQ0RELFdBQVMsT0FEUjtBQUVEQyxZQUFVO0FBRlQsQ0FiWSxFQWdCWjtBQUNERCxXQUFTLHlCQURSO0FBRURDLFlBQVU7QUFGVCxDQWhCWSxDQUFqQiIsImZpbGUiOiJuYW1lLmpzIiwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSBbXG4gIHtcbiAgICByZWNOYW1lOiAn5bCP5Zyf6LGG54KW5o6S6aqoJyxcbiAgICByZWNQaG90bzogJ2h0dHA6Ly9pMDQucGljLnNvZ291LmNvbS8xYWIxMzliNThmMzMwMDZhJ1xuICB9LCB7XG4gICAgcmVjTmFtZTogJ+e+iuiCieeZveiQneWNnOaxpCcsXG4gICAgcmVjUGhvdG86ICdodHRwOi8vaTA0LnBpYy5zb2dvdS5jb20vYjFjYjQwMDk2MWYyNGEwMidcbiAgfSwge1xuICAgIHJlY05hbWU6ICfng6Tln7nmoLnph5Hpkojoj4fljbcnLFxuICAgIHJlY1Bob3RvOiAnaHR0cDovL2kwMi5waWMuc29nb3UuY29tLzAzZDEyMzRhMzUxZTYyOGInXG4gIH0sIHtcbiAgICByZWNOYW1lOiAn6IqS5p6c5Y2D5bGC6JuL57OVJyxcbiAgICByZWNQaG90bzogJ2h0dHA6Ly9pMDQucGljdG4uc29nb3VjZG4uY29tL2I2N2YwZTM1MGQwMjljNWYnXG4gIH0sIHtcbiAgICByZWNOYW1lOiAn5Lic5YyX6YWx6aqo5qOSJyxcbiAgICByZWNQaG90bzogJ2h0dHA6Ly9pMDIucGljLnNvZ291LmNvbS82NDAyMDk1MjQxYWM2NGU4J1xuICB9LCB7XG4gICAgcmVjTmFtZTogJ+iKnem6u+iEhuibi+WNtyAjTUVZRVIu54SV5b+D5Y6o5oi/77yM5ZSk6YaS576O5ZGzIycsXG4gICAgcmVjUGhvdG86ICdodHRwOi8vaTAyLnBpYy5zb2dvdS5jb20vM2MzNWY3ZmY4ZWUxZGY3NCdcbiAgfVxuXG5dXG4iXX0=
