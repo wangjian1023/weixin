@@ -81,7 +81,6 @@
 .explore {
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 
 .describe {
@@ -90,9 +89,11 @@
   justify-content: space-around;
   font-size: 15px;
   width: 50%;
-  height: 150px;
 }
 
+.mask {
+  color:#C8C8C8;
+}
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -110,7 +111,7 @@
       <view class="row" style="color:red"><text>搜索</text></view>
   </view>
 
-  <text style="color:#B8B8B8; font-size:20px; margin-left: 15px; magin-top:10px">最新菜谱</text>
+  <text style="color:#B8B8B8; font-size:20px; margin-left: 15px; magin-top:10px">家常菜谱</text>
 
   <view class="find">
     <view  @tap = "display" class="recommend " wx:for="{{content}}" wx:key="index" id="{{index}}">
@@ -118,9 +119,7 @@
         <image class="recPhoto" src="{{item.recPhoto}}" mode="scaleToFill" />
         <view class="describe">
           <text class="recName">{{item.recName}}</text>
-          <view style="height: 90px">
-            <view class="recName" style="height: 40px; color:#C8C8C8; align-items: center; -webkit-line-clamp:2; font-size:15px;">{{item.recDescribe}}</view>
-            </view>
+          <text class="recName" style="-webkit-line-clamp:2; color:#C8C8C8; font-size:15px">{{item.recDescribe}}</text>
           <text  class="recName" style="color:#C8C8C8; font-size:15px">{{item.recView}}</text>
         </view>
       </view>
@@ -143,10 +142,6 @@ export default class Index extends wepy.page {
     search: '../image/check.png',
     describe: '',
     view: '',
-    hierarchy: '',
-    conversion: '',
-    time: '',
-    materials: '',
     content: null
   }
   methods = {
@@ -155,7 +150,7 @@ export default class Index extends wepy.page {
       let item = self.content[e.currentTarget.id]
       console.log(item)
       wepy.navigateTo({
-        url: `./display?recPhoto=${item.recPhoto}&recName=${item.recName}&recDescribe=${item.recDescribe}&recView=${item.recView}&hierarchy=${item.hierarchy}&time=${item.time}&conversion=${item.conversion}&materials=${item.materials}`
+        url: `./display?recPhoto=${item.recPhoto}&recName=${item.recName}`
       })
     }
   }

@@ -1,0 +1,34 @@
+<style lang = "less">
+.photo {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  width: 300px;
+  margin-top: 10px;
+}
+</style>
+
+<template>
+<view>
+  <image class="photo" src="{{fair}}" />
+
+</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的菜谱'
+  }
+  data = {
+    src: '',
+    fair: 'http://mpic.tiankong.com/9d9/ab7/9d9ab79be0fd2d6b36ebafdc317e5359/640.jpg@300h'
+  }
+  methods = {
+
+  }
+  onLoad() { }
+}
+</script>

@@ -1,12 +1,53 @@
 
-  <view class="button">
-    <view class="text">
-      <text>{{recName}}</text>
+<view>
+  <view bindtap="son" class="background">
+    <view bindtap="son" class="section">
+      <input style="align-items: center; justify-content: flex-start;" placeholder="搜索菜谱、食材" focus="{{focus}}" config-type="search" class="input"/>
+      <image class="photo" src="{{search}}"/>
     </view>
-    <view class="photo">
-      <image src="{{recPhoto}}" mode="widthFix"/>
-    </view>
-    <!-- <view class = "describe">
-      <text space = "nbsp">{{describe}}</text>
-      </view> -->
   </view>
+  <image class="picture" src="{{recPhoto}}"/>
+
+  <view class="text">
+    <text>{{recName}}</text>
+    <text style="font-size: 14px">{{recView}}</text>
+  </view>
+
+  <view class="text" style="height: 60px; flex-direction: row;">
+    <text>{{recDescribe}}</text>
+  </view>
+
+  <view class="text" style="height: 20px; flex-direction: row; color:#E0E0E0">
+    <text>难度：({{hierarchy}})</text>
+    <text>时间： {{time}}  分钟</text>
+  </view>
+
+  <text class="sweetheart">_食材用料明细_</text>
+
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text>{{materials}}</text>
+    <text>{{conversion}}</text>
+  </view>
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text>{{materials}}</text>
+    <text>{{conversion}}</text>
+  </view>
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text>{{materials}}</text>
+    <text>{{conversion}}</text>
+  </view>
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text>{{materials}}</text>
+    <text>{{conversion}}</text>
+  </view>
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text>{{materials}}</text>
+    <text>{{conversion}}</text>
+  </view>
+
+
+  <text class="sweetheart">·制作步骤·</text>
+  <text class="sweetheart">/温馨小贴士/</text>
+
+
+</view>

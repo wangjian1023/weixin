@@ -1,12 +1,5 @@
 
 <view>
-  <view class="background">
-    <view class="section">
-      <input placeholder="想吃什么菜啦？" focus="{{focus}}" config-type="search" class="input"/>
-      <image class="photo" src="{{search}}"/>
-    </view>
-  </view>
-
   <view class="row">
     <text style="color: red">|</text>
     <text>今日推荐</text>
@@ -20,23 +13,29 @@
         </block>
       </swiper>
   </view>
+  <view class="background">
+    <view class="section">
+      <input placeholder="搜索菜名或菜谱" focus="{{focus}}" config-type="search" class="input"/>
+      <image class="photo" src="{{search}}"/>
+    </view>
+  </view>
 
   <view class="border">
-      <view class="column six" style="background-color:#b8b10e">
+      <view bindtap="like" class="column six" style="background-color:#b8b10e">
         <image class="photo" src="{{time}}"/>
         <text>最新菜谱</text>
       </view>
-      <view class="column six" style="background-color:#FF9933">
+      <view bindtap="favourite" class="column six" style="background-color:#FF9933">
         <image class="photo" src="{{hot}}"/>
         <text>最热菜谱</text>
       </view>
   </view>
   <view class="border">
-      <view class="column six" style="background-color:#99FF99">
+      <view bindtap="storm" class="column six" style="background-color:#99FF99">
         <image class="photo" src="{{king}}"/>
         <text>推荐菜谱</text>
       </view>
-      <view class="column six" style="background-color:#99FFFF">
+      <view bindtap="storm" class="column six" style="background-color:#99FFFF">
         <image class="photo" src="{{eat}}"/>
         <text>家常菜谱</text>
       </view>

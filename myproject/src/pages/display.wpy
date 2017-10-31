@@ -1,46 +1,107 @@
 <style>
-.text {
-  font-size: 30px;
-  justify-content: center;
-  color: gray;
-  margin-top: 25px;
-}
-button {
+.section {
   display: flex;
+  width: 90%;
   justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  
+  align-items: center;
+  border: 1px solid gray;
+  background-color: white;
+  height: 30px;
+  font-size: 15px;
+  justify-content: space-between;
 }
 
 .photo {
   display: flex;
+  height: 25px;
+  width: 25px;
+  align-content: center;
+  padding: 5px;
+}
+.background {
+  display: flex;
+  width: 100%;
   height: 50px;
-  width: 80%;
+  align-items: center;
   justify-content: center;
 }
 
-.describe{
-  float: left;
-  font-size: 20px;
-  color: #6a6a6a;
-  margin: 20rpx;
+.picture {
+  height: 230px;
+  width: 95%;
+  margin: 10px;
+}
+.text {
+  display: flex;
+  border-bottom: 1px solid gray;
+  height: 40px;
+  flex-direction: column;
+  font-size: 15px;
+  justify-content: center;
+  align-items: center;
 }
 
+.sweetheart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:20px;
+  margin-top:15px;
+}
 </style>
 <template>
-  <view class = "button" >
-    <view class="text">
-      <text>{{recName}}</text>
+<view>
+  <view bindtap="son" class="background">
+    <view   bindtap="son" class="section">
+      <input  style="align-items: center; justify-content: flex-start;" placeholder="搜索菜谱、食材" focus="{{focus}}" config-type="search" class="input" />
+      <image class="photo" src="{{search}}"></image>
     </view>
-    <view class = "photo">
-      <image src = "{{recPhoto}}" mode = "widthFix"/>
-    </view>
-    <!-- <view class = "describe">
-      <text space = "nbsp">{{describe}}</text>
-      </view> -->
   </view>
+  <image class="picture" src="{{recPhoto}}"></image>
+
+  <view class="text">
+    <text>{{recName}}</text>
+    <text style="font-size: 14px">{{recView}}</text>
+  </view>
+
+  <view class="text" style="height: 60px; flex-direction: row;">
+    <text >{{recDescribe}}</text>
+  </view>
+
+  <view class="text" style="height: 20px; flex-direction: row; color:#E0E0E0">
+    <text >难度：({{hierarchy}})</text>
+    <text >时间： {{time}}  分钟</text>
+  </view>
+
+  <text class="sweetheart">_食材用料明细_</text>
+
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text >{{materials}}</text>
+    <text >{{conversion}}</text>
+  </view>
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text >{{materials}}</text>
+    <text >{{conversion}}</text>
+  </view>
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text >{{materials}}</text>
+    <text >{{conversion}}</text>
+  </view>
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text >{{materials}}</text>
+    <text >{{conversion}}</text>
+  </view>
+  <view class="text" style="height: 20px; flex-direction: row;">
+    <text >{{materials}}</text>
+    <text >{{conversion}}</text>
+  </view>
+
+
+  <text class="sweetheart">·制作步骤·</text>
+  <text class="sweetheart">/温馨小贴士/</text>
+
+
+</view>  
 </template>
 
 <script>
@@ -53,17 +114,33 @@ export default class Show extends wepy.page {
     src: '',
     recPhoto: '',
     recName: '',
-    describe: ''
+    recView: '',
+    recDescribe: '',
+    hierarchy: '',
+    time: '',
+    materials: '',
+    conversion: '',
+    search: '../image/check.png'
   }
   methods = {
+    son() {
+      wepy.navigateTo({
+        url: '../pages/search'
+      })
+    }
   }
   onLoad(data) {
     let self = this
     console.log(data)
     self.recName = data.recName
     self.recPhoto = data.recPhoto
-    self.describe = data.describe
-    console.log(self.recPhoto)
+    self.recView = data.recView
+    self.recDescribe = data.recDescribe
+    self.hierarchy = data.hierarchy
+    self.time = data.time
+    self.conversion = data.conversion
+    self.materials = data.materials
+    console.log(self.recDescribe, 'res')
   }
 }
 </script>

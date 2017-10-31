@@ -22,7 +22,12 @@ export default class extends wepy.app {
       'pages/home',
       'pages/search',
       'pages/list',
-      'pages/display'
+      'pages/display',
+      'pages/menu1',
+      'pages/menu2',
+      'pages/menu3',
+      'pages/menu4',
+      'pages/our'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -53,6 +58,12 @@ export default class extends wepy.app {
         text: '收藏',
         iconPath: './image/collect.png',
         selectedIconPath: './image/collect1.png'
+      },
+      {
+        pagePath: 'pages/our',
+        text: '我的',
+        iconPath: './image/our1.png',
+        selectedIconPath: './image/our.png'
       }]
     }
   }

@@ -1,0 +1,5 @@
+
+<view>
+  <image class="photo" src="{{fair}}"/>
+
+</view>

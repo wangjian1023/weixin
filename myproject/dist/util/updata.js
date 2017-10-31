@@ -1,2 +1,22 @@
-"use strict";
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVwZGF0YS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwiZmlsZSI6InVwZGF0YS5qcyIsInNvdXJjZXNDb250ZW50IjpbXX0=
+'use strict';
+
+module.exports = [{
+  recName: '小土豆炖排骨',
+  recPhoto: 'http://i04.pic.sogou.com/1ab139b58f33006a'
+}, {
+  recName: '羊肉白萝卜汤',
+  recPhoto: 'http://i04.pic.sogou.com/b1cb400961f24a02'
+}, {
+  recName: '烤培根金针菇卷',
+  recPhoto: 'http://i02.pic.sogou.com/03d1234a351e628b'
+}, {
+  recName: '芒果千层蛋糕',
+  recPhoto: 'http://i04.pictn.sogoucdn.com/b67f0e350d029c5f'
+}, {
+  recName: '东北酱骨棒',
+  recPhoto: 'http://i02.pic.sogou.com/6402095241ac64e8'
+}, {
+  recName: '芝麻脆蛋卷 #MEYER.焕心厨房，唤醒美味#',
+  recPhoto: 'http://i02.pic.sogou.com/3c35f7ff8ee1df74'
+}];
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVwZGF0YS5qcyJdLCJuYW1lcyI6WyJtb2R1bGUiLCJleHBvcnRzIiwicmVjTmFtZSIsInJlY1Bob3RvIl0sIm1hcHBpbmdzIjoiOztBQUFBQSxPQUFPQyxPQUFQLEdBQWlCLENBQ2Y7QUFDRUMsV0FBUyxRQURYO0FBRUVDLFlBQVU7QUFGWixDQURlLEVBSVo7QUFDREQsV0FBUyxRQURSO0FBRURDLFlBQVU7QUFGVCxDQUpZLEVBT1o7QUFDREQsV0FBUyxTQURSO0FBRURDLFlBQVU7QUFGVCxDQVBZLEVBVVo7QUFDREQsV0FBUyxRQURSO0FBRURDLFlBQVU7QUFGVCxDQVZZLEVBYVo7QUFDREQsV0FBUyxPQURSO0FBRURDLFlBQVU7QUFGVCxDQWJZLEVBZ0JaO0FBQ0RELFdBQVMseUJBRFI7QUFFREMsWUFBVTtBQUZULENBaEJZLENBQWpCIiwiZmlsZSI6InVwZGF0YS5qcyIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzID0gW1xuICB7XG4gICAgcmVjTmFtZTogJ+Wwj+Wcn+ixhueCluaOkumqqCcsXG4gICAgcmVjUGhvdG86ICdodHRwOi8vaTA0LnBpYy5zb2dvdS5jb20vMWFiMTM5YjU4ZjMzMDA2YSdcbiAgfSwge1xuICAgIHJlY05hbWU6ICfnvorogonnmb3okJ3ljZzmsaQnLFxuICAgIHJlY1Bob3RvOiAnaHR0cDovL2kwNC5waWMuc29nb3UuY29tL2IxY2I0MDA5NjFmMjRhMDInXG4gIH0sIHtcbiAgICByZWNOYW1lOiAn54Ok5Z+55qC56YeR6ZKI6I+H5Y23JyxcbiAgICByZWNQaG90bzogJ2h0dHA6Ly9pMDIucGljLnNvZ291LmNvbS8wM2QxMjM0YTM1MWU2MjhiJ1xuICB9LCB7XG4gICAgcmVjTmFtZTogJ+iKkuaenOWNg+Wxguibi+ezlScsXG4gICAgcmVjUGhvdG86ICdodHRwOi8vaTA0LnBpY3RuLnNvZ291Y2RuLmNvbS9iNjdmMGUzNTBkMDI5YzVmJ1xuICB9LCB7XG4gICAgcmVjTmFtZTogJ+S4nOWMl+mFsemqqOajkicsXG4gICAgcmVjUGhvdG86ICdodHRwOi8vaTAyLnBpYy5zb2dvdS5jb20vNjQwMjA5NTI0MWFjNjRlOCdcbiAgfSwge1xuICAgIHJlY05hbWU6ICfoip3purvohIbom4vljbcgI01FWUVSLueEleW/g+WOqOaIv++8jOWUpOmGkue+juWRsyMnLFxuICAgIHJlY1Bob3RvOiAnaHR0cDovL2kwMi5waWMuc29nb3UuY29tLzNjMzVmN2ZmOGVlMWRmNzQnXG4gIH1cblxuXVxuIl19

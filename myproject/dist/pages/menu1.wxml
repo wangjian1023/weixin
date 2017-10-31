@@ -16,9 +16,7 @@
         <image class="recPhoto" src="{{item.recPhoto}}" mode="scaleToFill"/>
         <view class="describe">
           <text class="recName">{{item.recName}}</text>
-          <view style="height: 90px">
-            <view class="recName" style="height: 40px; color:#C8C8C8; align-items: center; -webkit-line-clamp:2; font-size:15px;">{{item.recDescribe}}</view>
-            </view>
+          <text class="recName" style="-webkit-line-clamp:2; color:#C8C8C8; font-size:15px">{{item.recDescribe}}</text>
           <text class="recName" style="color:#C8C8C8; font-size:15px">{{item.recView}}</text>
         </view>
       </view>
