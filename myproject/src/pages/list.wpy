@@ -113,7 +113,7 @@
   <text style="color:#B8B8B8; font-size:20px; margin-left: 15px; magin-top:10px">最新菜谱</text>
 
   <view class="find">
-    <view  @tap = "display" class="recommend " wx:for="{{content}}" wx:key="index" id="{{index}}">
+    <view  @tap = "display" class="recommend " wx:for="{{content}}" wx:key="index" data-index="{{index}}">
       <view class="explore">
         <image class="recPhoto" src="{{item.recPhoto}}" mode="scaleToFill" />
         <view class="describe">
@@ -147,16 +147,26 @@ export default class Index extends wepy.page {
     conversion: '',
     time: '',
     materials: '',
-    content: null
+    // food: '',
+    // summary: '',
+    artist: '',
+    character: '',
+    reminder: '',
+    content: []
   }
   methods = {
     display(e) {
       let self = this
-      let item = self.content[e.currentTarget.id]
-      console.log(item)
+      const item = self.content[e.currentTarget.dataset.index]
+      console.log(item, 'item-id')
+      try {
+        wepy.setStorageSync('content', item)
+      } catch (e) {
+      }
       wepy.navigateTo({
-        url: `./display?recPhoto=${item.recPhoto}&recName=${item.recName}&recDescribe=${item.recDescribe}&recView=${item.recView}&hierarchy=${item.hierarchy}&time=${item.time}&conversion=${item.conversion}&materials=${item.materials}`
+        url: './display'
       })
+      console.log(item, 'content[item]')
     }
   }
   onLoad() {

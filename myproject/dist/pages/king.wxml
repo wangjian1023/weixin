@@ -24,7 +24,7 @@
 
   <text class="sweetheart">_食材用料明细_</text>
 
-  <view class="text" style="height: 20px;"  wx:for="{{content.food}}" wx:key="index" data-index="{{index}}">
+  <view class="text" style="height: 20px;"  wx:for="{{content.food}}" wx:key="index">
     <view class="between">
       <text>{{item.materials}}</text>
       <text>{{item.conversion}}</text>

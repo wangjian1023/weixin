@@ -2,16 +2,16 @@
 .photo {
   display: flex;
   align-items: center;
-  height: 70px;
-  width: 300px;
-  margin-top: 10px;
+  height: 220px;
+  justify-content: center;
 }
 </style>
 
 <template>
 <view>
-  <image class="photo" src="{{fair}}" />
-
+  <view style="display: flex;align-items: center;justify-content: center;">
+    <image class="photo" src="{{fair}}" />
+  </view>
 </view>
 </template>
 

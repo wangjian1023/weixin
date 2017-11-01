@@ -1,5 +1,6 @@
 
 <view>
-  <image class="photo" src="{{fair}}"/>
-
+  <view style="display: flex;align-items: center;justify-content: center;">
+    <image class="photo" src="{{fair}}"/>
+  </view>
 </view>

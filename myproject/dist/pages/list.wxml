@@ -11,7 +11,7 @@
   <text style="color:#B8B8B8; font-size:20px; margin-left: 15px; magin-top:10px">最新菜谱</text>
 
   <view class="find">
-    <view bindtap="display" class="recommend "  wx:for="{{content}}" wx:key="index" id="{{index}}">
+    <view bindtap="display" class="recommend "  wx:for="{{content}}" wx:key="index" data-index="{{index}}">
       <view class="explore">
         <image class="recPhoto" src="{{item.recPhoto}}" mode="scaleToFill"/>
         <view class="describe">

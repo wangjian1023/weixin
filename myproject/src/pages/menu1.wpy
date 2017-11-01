@@ -150,7 +150,7 @@ export default class Index extends wepy.page {
       let item = self.content[e.currentTarget.id]
       console.log(item)
       wepy.navigateTo({
-        url: `./display?recPhoto=${item.recPhoto}&recName=${item.recName}`
+        url: `./king?recPhoto=${item.recPhoto}&recName=${item.recName}`
       })
     }
   }

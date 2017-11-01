@@ -1,1 +1,1 @@
-.photo{display:flex;align-items:center;height:70px;width:300px;margin-top:10px}
+.photo{display:flex;align-items:center;height:220px;justify-content:center}
