@@ -3,4 +3,12 @@
   <view style="display: flex;align-items: center;justify-content: center;">
     <image class="photo" src="{{fair}}"/>
   </view>
+
+  <view class="win">还没有你的菜谱，何不添加一个？</view>
+  <view class="center">
+    <view bindtap="one" class="border">
+      <text style="color:#9999CC">创建菜谱</text>
+    </view>
+  </view>
+
 </view>

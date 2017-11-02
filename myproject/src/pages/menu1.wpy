@@ -131,7 +131,7 @@
 
 <script>
 import wepy from 'wepy'
-import update from '../util/update.js'
+import up from '../util/name.js'
 export default class Index extends wepy.page {
   config = {
     navigationBarTitleText: '爱心套餐 ',
@@ -142,21 +142,27 @@ export default class Index extends wepy.page {
     search: '../image/check.png',
     describe: '',
     view: '',
+    hierarchy: '',
     content: null
   }
   methods = {
     display(e) {
       let self = this
-      let item = self.content[e.currentTarget.id]
-      console.log(item)
+      const item = self.content[e.currentTarget.dataset.index]
+      console.log(item, 'item-id')
+      try {
+        wepy.setStorageSync('content', item)
+      } catch (e) {
+      }
       wepy.navigateTo({
-        url: `./king?recPhoto=${item.recPhoto}&recName=${item.recName}`
+        url: './display'
       })
+      console.log(item, 'content[item]')
     }
   }
   onLoad() {
     let self = this
-    self.content = update
+    self.content = up
     wepy.getSystemInfo({
       success(res) {
         self.height = res.windowHeight

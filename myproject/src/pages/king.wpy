@@ -103,25 +103,25 @@
       <image class="photo" src="{{search}}"></image>
     </view>
   </view>
-  <image class="picture" src="{{content.recPhoto}}"></image>
+  <image class="picture" src="{{recPhoto}}"></image>
 
   <view class="text">
-    <text>{{content.recName}}</text>
-    <text style="font-size: 14px">{{content.recView}}</text>
+    <text>{{recName}}</text>
+    <text style="font-size: 14px">{{recView}}</text>
   </view>
 
   <view class="text" style="height: 60px; flex-direction: row;">
-    <text >{{content.recDescribe}}</text>
+    <text >{{recDescribe}}</text>
   </view>
 
   <view class="text" style="height: 20px; flex-direction: row; color:#E0E0E0">
-    <text >难度:({{content.hierarchy}})</text>
-    <text >时间： {{content.time}} 分钟</text>
+    <text >难度:({{rechierarchy}})</text>
+    <text >时间： {{time}} 分钟</text>
   </view>
 
   <text class="sweetheart">_食材用料明细_</text>
 
-  <view class="text" style="height: 20px;"  wx:for="{{content.food}}" wx:key="index" >
+  <view class="text" style="height: 20px;"  wx:for="{{food}}" wx:key="index" data-index="{{index}}">
     <view class="between">
       <text >{{item.materials}}</text>
       <text >{{item.conversion}}</text>
@@ -130,14 +130,14 @@
 
   <text class="sweetheart">·制作步骤·</text>
 
-  <view class="column" wx:for="{{content.summary}}" wx:key="index" data-index="{{index}}">
+  <view class="column" wx:for="{{summary}}" wx:key="index" data-index="{{index}}">
     <image class="atlas" src="{{item.artist}}"></image>
-    <text class="essay">{{item.character}}</text>
+    <text class="essay">{{item.reccharacter}}</text>
   </view>
 
   <text class="sweetheart">/温馨小贴士/</text>
 
-  <text class="essay">{{content.reminder}}</text>
+  <text class="essay">{{reminder}}</text>
 
   <view class="pattern">
     <view style=" display:flex;justify-content: row;">
@@ -163,21 +163,22 @@ export default class Show extends wepy.page {
     src: '',
     content: '',
     item: '',
-    // recPhoto: '',
-    // recName: '',
-    // recView: '',
-    // recDescribe: '',
-    // hierarchy: '',
-    // time: '',
-    // materials: '',
-    // conversion: '',
-    // reminder: '',
+    recPhoto: '',
+    recName: '',
+    recView: '',
+    recDescribe: '',
+    hierarchy: '',
+    time: '',
+    materials: '',
+    conversion: '',
     search: '../image/check.png',
     meng: '../image/meng1.png',
     meng1: '../image/memg.png',
-    // food: [],
-    // summary: [],
-    reminder: ''
+    food: [],
+    summary: [],
+    reminder: '',
+    character: '',
+    artist: ''
   }
   methods = {
     son() {
@@ -186,9 +187,28 @@ export default class Show extends wepy.page {
       })
     }
   }
-  onLoad() {
+  onLoad(data) {
     let self = this
-    self.content = wepy.getStorageSync('content')
+    self.recName = data.recName
+    self.recPhoto = data.recPhoto
+    self.recView = data.recView
+    self.recDescribe = data.recDescribe
+    self.time = data.time
+    self.hierarchy = data.hierarchy
+    // self.materials = data.materials
+    // self.conversion = data.conversion
+    // self.artist = data.artist
+    // self.character = data.character
+    self.reminder = data.reminder
+    self.food = data.food      // split(,)作用是把逗号隔开的字符串转换为数组
+    console.log(data, 'bbbbbb')
+    // console.log(data.food[], 'ddddddddd')
+    self.summary = data.summary
+    // console.log(data, '12')
+    // console.log(self.recDescribe)
+    // console.log(self.food)
+    // console.log(self.hierarchy)
+    // console.log(self.food[0].materials)
   }
 }
 </script>

@@ -121,7 +121,7 @@
 
   <text class="sweetheart">_食材用料明细_</text>
 
-  <view class="text" style="height: 20px;"  wx:for="{{content.food}}" wx:key="index" data-index="{{index}}">
+  <view class="text" style="height: 20px;"  wx:for="{{content.food}}" wx:key="index">
     <view class="between">
       <text >{{item.materials}}</text>
       <text >{{item.conversion}}</text>
@@ -141,7 +141,7 @@
 
   <view class="pattern">
     <view style=" display:flex;justify-content: row;">
-      <image class="photo" src="{{meng}}"></image>
+      <image @tap ="star" class="photo" src="{{collect ? '../image/meng.png' : star}}" ></image>
       <text style=" display:flex; justify-content:center; align-items: center;">收藏菜谱</text>
     </view>  
   </view>
@@ -183,6 +183,15 @@ export default class Show extends wepy.page {
       wepy.navigateTo({
         url: '../pages/search'
       })
+    },
+    star() {
+      let self = this
+      self.collect = !self.collect
+      if (self.collect) {
+        self.star = '../image/memg.png'
+      } else {
+        self.star = '../image/meng1.png'
+      }
     }
   }
   onLoad() {

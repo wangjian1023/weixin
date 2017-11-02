@@ -131,7 +131,7 @@
 
 <script>
 import wepy from 'wepy'
-import update from '../util/update.js'
+import update from '../util/name3.js'
 export default class Index extends wepy.page {
   config = {
     navigationBarTitleText: '爱心套餐 ',

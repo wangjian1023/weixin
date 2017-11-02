@@ -1,1 +1,1 @@
-.photo{display:flex;align-items:center;height:220px;justify-content:center}
+.photo{display:flex;align-items:center;height:220px;justify-content:center}.win{display:flex;justify-content:center;align-items:center;font-size:15px;height:30px;width:100%;color:gray}.center{display:flex;justify-content:center;align-items:center;margin-top:15px}.border{display:flex;border:1px solid #D8D8D8;height:30px;border-radius:10px;width:80%;background-color:#D8D8D8;justify-content:center;align-items:center}

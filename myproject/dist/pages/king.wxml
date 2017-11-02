@@ -6,25 +6,25 @@
       <image class="photo" src="{{search}}"/>
     </view>
   </view>
-  <image class="picture" src="{{content.recPhoto}}"/>
+  <image class="picture" src="{{recPhoto}}"/>
 
   <view class="text">
-    <text>{{content.recName}}</text>
-    <text style="font-size: 14px">{{content.recView}}</text>
+    <text>{{recName}}</text>
+    <text style="font-size: 14px">{{recView}}</text>
   </view>
 
   <view class="text" style="height: 60px; flex-direction: row;">
-    <text>{{content.recDescribe}}</text>
+    <text>{{recDescribe}}</text>
   </view>
 
   <view class="text" style="height: 20px; flex-direction: row; color:#E0E0E0">
-    <text>难度:({{content.hierarchy}})</text>
-    <text>时间： {{content.time}} 分钟</text>
+    <text>难度:({{rechierarchy}})</text>
+    <text>时间： {{time}} 分钟</text>
   </view>
 
   <text class="sweetheart">_食材用料明细_</text>
 
-  <view class="text" style="height: 20px;"  wx:for="{{content.food}}" wx:key="index">
+  <view class="text" style="height: 20px;"  wx:for="{{food}}" wx:key="index" data-index="{{index}}">
     <view class="between">
       <text>{{item.materials}}</text>
       <text>{{item.conversion}}</text>
@@ -33,14 +33,14 @@
 
   <text class="sweetheart">·制作步骤·</text>
 
-  <view class="column"  wx:for="{{content.summary}}" wx:key="index" data-index="{{index}}">
+  <view class="column"  wx:for="{{summary}}" wx:key="index" data-index="{{index}}">
     <image class="atlas" src="{{item.artist}}"/>
-    <text class="essay">{{item.character}}</text>
+    <text class="essay">{{item.reccharacter}}</text>
   </view>
 
   <text class="sweetheart">/温馨小贴士/</text>
 
-  <text class="essay">{{content.reminder}}</text>
+  <text class="essay">{{reminder}}</text>
 
   <view class="pattern">
     <view style=" display:flex;justify-content: row;">

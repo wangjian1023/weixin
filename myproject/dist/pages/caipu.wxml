@@ -1,8 +1,15 @@
 
 <view>
+  <view class="background">
+    <view bindtap="past" class="section">
+      <input placeholder="搜索菜名或菜谱" focus="{{focus}}" config-type="search" class="input"/>
+      <image class="photo" src="{{search}}"/>
+    </view>
+  </view>
+
   <view class="row">
     <text style="color: red">|</text>
-    <text>今日推荐</text>
+    <text style="margin-left:3px;">今日推荐</text>
   </view>
   <view class="swiper">
       <swiper class="slide-image" autoplay="true" indicator-dots="{{indicatorDots}}" indicator-color="{{color}}" indicator-active-color="{{color1}}" interval="3000" duration="1000" circular="true" current="{{}}">
@@ -12,12 +19,6 @@
           </swiper-item>
         </block>
       </swiper>
-  </view>
-  <view class="background">
-    <view class="section">
-      <input placeholder="搜索菜名或菜谱" focus="{{focus}}" config-type="search" class="input"/>
-      <image class="photo" src="{{search}}"/>
-    </view>
   </view>
 
   <view class="border">
@@ -43,20 +44,20 @@
   
   <view class="between row">
     <view>  
-      <text style="color: red">|</text>
-      <text>最新上线菜谱</text>
+      <text style="color: #FF3333">|</text>
+      <text style="margin-left:3px;">最新上线菜谱</text>
     </view>  
-      <text bindtap="list" class="end" style="color: red">更多>></text>
+      <text bindtap="list" class="end" style="color: #FF9966">更多>></text>
   </view>
 
-  <view class="find product">
+  <view>
+    <view class="find product">
         <view bindtap="display" class="recommend "  wx:for="{{content}}" wx:key="index" id="{{index}}">
           <image class="recPhoto" src="{{item.recPhoto}}" mode="scaleToFill"/>
-        <view class="product">  
-          <text class="recName">{{item.recName}}</text>
-        </view>  
+          <text class="recName">{{item.recName}}</text> 
         </view>
-  </view>
+    </view>
+  </view>  
 
     <view class="bottom row">
       <text>唯爱与</text> 
