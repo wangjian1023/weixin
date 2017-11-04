@@ -25,6 +25,7 @@
 .border {
   display: flex;
   border: 1px solid #D8D8D8;
+  font-size: 13px;
   height: 30px;
   border-radius: 10px;
   width: 80%;

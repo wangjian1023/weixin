@@ -103,7 +103,7 @@
 
 <template>
 <view>
-  <view class="background">
+  <view class="background" @tap="past">
       <view class="section">
         <input placeholder="搜索菜谱、食材" focus="{{focus}}" config-type="search" class="input" />
         <image class="photo" src="{{search}}"></image>
@@ -148,7 +148,8 @@ export default class Index extends wepy.page {
   methods = {
     display(e) {
       let self = this
-      const item = self.content[e.currentTarget.dataset.index]
+      console.log(e)
+      const item = self.content[e.currentTarget.id]
       console.log(item, 'item-id')
       try {
         wepy.setStorageSync('content', item)
@@ -158,6 +159,11 @@ export default class Index extends wepy.page {
         url: './display'
       })
       console.log(item, 'content[item]')
+    },
+    past() {
+      wepy.navigateTo({
+        url: './search1'
+      })
     }
   }
   onLoad() {

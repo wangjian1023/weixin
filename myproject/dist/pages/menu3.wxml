@@ -1,6 +1,6 @@
 
 <view>
-  <view class="background">
+  <view class="background" bindtap="past">
       <view class="section">
         <input placeholder="搜索菜谱、食材" focus="{{focus}}" config-type="search" class="input"/>
         <image class="photo" src="{{search}}"/>

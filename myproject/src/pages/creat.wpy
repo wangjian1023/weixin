@@ -1,60 +1,150 @@
-<style lang = "less">
-.photo {
-  display: flex;
-  align-items: center;
-  height: 220px;
-  justify-content: center;
+<style>
+.border {
+  height: 13rem;
+  margin: 5px 10px;
+  background-color: #E0E0E0;
 }
-.win {
+.text {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 15px;
-  height: 30px;
+}
+.photo {
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.wonder {
+  display: flex;
+  border-bottom: 1px solid gray;
+  height: 40px;
+  font-size: 15px;
+  align-items: center;
+  margin: 0px 10px;
+  justify-content:space-between;
+
+}
+.input {
+  display: flex;
   width: 100%;
-  color: gray;
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 15px;
-}
-
-.border {
-  display: flex;
-  border: 1px solid red;
-  height: 30px;
-  border-radius: 10px;
-  width: 80%;
-  background-color: red;
-  justify-content: center;
-  align-items: center;
-
 }
 </style>
 
 <template>
-<view>
+  <view>
+    <view class="border">
+      <view style="display:flex; align-items: center; justify-content: center;height:100px; flex-direction: column;">
+        <image class="photo" src="{{add}}"></image>
+        <text class="text">点击上传封面图</text>
+      </view>
+    </view>
+    <view class="wonder">
+      <input placeholder="菜谱标题.." maxlength = "20" class="input"/>
+    </view>
 
+    <view class="wonder" style="display:flex;">
+      <text>难度</text>
+      <view class="section" style="color:red">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+            必选：{{array[index]}}
+            </view>
+        </picker>
+      </view>
+    </view>
 
-</view>
+    <!-- <view class="wonder" style="display:flex;">
+      <text>时间</text>
+      <view class="section" style="color:red">
+          <picker bindchange="bindPickerChange" value="{{time}}" range="{{arr}}">
+            <view class="picker">
+            必选：{{arr[time]}}
+            </view>
+        </picker>
+      </view>
+    </view> -->
+
+  </view>
 </template>
 
 <script>
 import wepy from 'wepy'
-
-export default class Index extends wepy.page {
+export default class Take extends wepy.page {
   config = {
     navigationBarTitleText: '编辑菜谱'
   }
   data = {
-    src: ''
+    height: 0,
+    width: 0,
+    src: '',
+    add: '../image/add.png',
+    array: ['初级', '中级', '高级', '神级'],
+    objectArray: [
+      {
+        id: 0,
+        name: '初级'
+      },
+      {
+        id: 1,
+        name: '中级'
+      },
+      {
+        id: 2,
+        name: '高级'
+      },
+      {
+        id: 3,
+        name: '神级'
+      }
+    ],
+    index: 0
+    // time: 0,
+    // arr: ['五分钟', '十五分钟', '半小时', '一小时', '两小时'],
+    // objectArr: [
+    //   {
+    //     id: 0,
+    //     name: '五分钟'
+    //   },
+    //   {
+    //     id: 1,
+    //     name: '十五分钟'
+    //   },
+    //   {
+    //     id: 2,
+    //     name: '半小时'
+    //   },
+    //   {
+    //     id: 3,
+    //     name: '一小时'
+    //   },
+    //   {
+    //     id: 4,
+    //     name: '两小时'
+    //   }
+    // ]
   }
   methods = {
-
+    bindPickerChange: function(e) {
+      let self = this
+      console.log('picker发送选择改变，携带值为', e.deotail.value)
+      self.index = e.detail.value
+      self.setData({
+        index: e.detail.value
+      })
+    }
   }
-  onLoad() { }
+  onLoad() {
+    let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
+  }
 }
 </script>

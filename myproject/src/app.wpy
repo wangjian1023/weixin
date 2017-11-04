@@ -29,7 +29,8 @@ export default class extends wepy.app {
       'pages/menu4',
       'pages/our',
       'pages/king',
-      'pages/creat'
+      'pages/creat',
+      'pages/search1'
     ],
     window: {
       backgroundTextStyle: 'light',

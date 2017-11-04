@@ -1,0 +1,29 @@
+
+<view class="back">
+  <view class="background" style="height: {{height}}px;">
+    <view class="height">
+      <view class="section">
+        <textarea bindblur="bindTextAreaBlur" placeholder="描述你的作品..." bindinput="des"/>
+      </view>
+    </view>
+    <view class="center">
+      <view class="photoName">
+        <input bindblur="bindTextAreaBlur" placeholder="给你的作品起个名" maxlength="7"/>
+      </view>
+    </view>
+
+    <view class="upPhoto">
+      <block  wx:for="{{src}}">
+        <view bindtap="viewImg">
+          <image class="image" mode="scaleToFill" src="{{item}}"/>
+        </view>
+      </block>
+      <view class="button" bindtap="ButtonTap">
+        <image class="image-button" src="{{buttonUp}}"/>
+      </view>
+    </view>
+    <view class="up">
+      <view class="uptap" bindtap="up">上传</view>
+    </view>
+  </view>
+  </view>

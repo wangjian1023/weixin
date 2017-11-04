@@ -1,5 +1,35 @@
 
-<view>
+  <view>
+    <view class="border">
+      <view style="display:flex; align-items: center; justify-content: center;height:100px; flex-direction: column;">
+        <image class="photo" src="{{add}}"/>
+        <text class="text">点击上传封面图</text>
+      </view>
+    </view>
+    <view class="wonder">
+      <input placeholder="菜谱标题.." maxlength="20" class="input"/>
+    </view>
 
+    <view class="wonder" style="display:flex;">
+      <text>难度</text>
+      <view class="section" style="color:red">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+            必选：{{array[index]}}
+            </view>
+        </picker>
+      </view>
+    </view>
 
-</view>
+    <!-- <view class="wonder" style="display:flex;">
+      <text>时间</text>
+      <view class="section" style="color:red">
+          <picker bindchange="bindPickerChange" value="{{time}}" range="{{arr}}">
+            <view class="picker">
+            必选：{{arr[time]}}
+            </view>
+        </picker>
+      </view>
+    </view> -->
+
+  </view>

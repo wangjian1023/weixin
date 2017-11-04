@@ -1,20 +1,21 @@
 <style>
 .section {
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: center;
   align-items: center;
   border: 1px solid gray;
   background-color: white;
   height: 30px;
-  font-size: 15px;
+  font-size: 10px;
+  margin: 0px 10px;
   justify-content: space-between;
 }
 
 .photo {
   display: flex;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   align-content: center;
   justify-content: center;
   /* padding: 5px; */
@@ -22,15 +23,15 @@
 .background {
   display: flex;
   width: 100%;
-  height: 50px;
+  height: 45px;
   align-items: center;
   justify-content: center;
 }
 
 .picture {
-  height: 230px;
+  height: 14rem;
   width: 95%;
-  margin: 10px;
+  margin: 2px 10px;
 }
 .text {
   display: flex;
@@ -40,6 +41,7 @@
   font-size: 15px;
   justify-content: center;
   align-items: center;
+  margin: 0px 10px;
 }
 
 .sweetheart {
@@ -52,22 +54,22 @@
 .between {
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .atlas {
   display: flex;
-  margin: 20px 10px 10px 10px;
-  height: 200px;
-  width: 90%;
+  height: 12rem;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
 
 .essay {
   display: flex;
-  font-size: 15px;
+  font-size: 13px;
   width: 100%;
-  height: 60px;
+  height: 30px;
+  margin: 5px 10px;
   
 }
 
@@ -76,6 +78,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0px 10px;
 }
 
 .pattern {
@@ -97,7 +100,7 @@
 </style>
 <template>
 <view>
-  <view bindtap="son" class="background">
+  <view class="background" @tap="past">
     <view   bindtap="son" class="section">
       <input  style="align-items: center; justify-content: flex-start;" placeholder="搜索菜谱、食材" focus="{{focus}}" config-type="search" class="input" />
       <image class="photo" src="{{search}}"></image>
@@ -110,7 +113,7 @@
     <text style="font-size: 14px">{{content.recView}}</text>
   </view>
 
-  <view class="text" style="height: 60px; flex-direction: row;">
+  <view class="text" style="height: 60px; flex-direction: row; font-size: 13px;">
     <text >{{content.recDescribe}}</text>
   </view>
 
@@ -121,7 +124,7 @@
 
   <text class="sweetheart">_食材用料明细_</text>
 
-  <view class="text" style="height: 20px;"  wx:for="{{content.food}}" wx:key="index">
+  <view class="text" style="height: 20px; font-size: 13px;"  wx:for="{{content.food}}" wx:key="index ">
     <view class="between">
       <text >{{item.materials}}</text>
       <text >{{item.conversion}}</text>
@@ -131,8 +134,9 @@
   <text class="sweetheart">·制作步骤·</text>
 
   <view class="column" wx:for="{{content.summary}}" wx:key="index" data-index="{{index}}">
-    <image class="atlas" src="{{item.artist}}"></image>
     <text class="essay">{{item.character}}</text>
+    <image class="photo" style="margin-top:10px;height:20px;margin-bottom:5px;" src="{{right}}"></image>
+    <image class="atlas" src="{{item.artist}}"></image>
   </view>
 
   <text class="sweetheart">/温馨小贴士/</text>
@@ -141,7 +145,7 @@
 
   <view class="pattern">
     <view style=" display:flex;justify-content: row;">
-      <image @tap ="star" class="photo" src="{{collect ? '../image/meng.png' : star}}" ></image>
+      <image @tap ="star" style="width:35px;" class="photo" src="{{collect ? '../image/meng1.png' : star}}" ></image>
       <text style=" display:flex; justify-content:center; align-items: center;">收藏菜谱</text>
     </view>  
   </view>
@@ -162,21 +166,14 @@ export default class Show extends wepy.page {
   data = {
     src: '',
     content: '',
-    // recPhoto: '',
-    // recName: '',
-    // recView: '',
-    // recDescribe: '',
-    // hierarchy: '',
-    // time: '',
-    // materials: '',
-    // conversion: '',
-    // reminder: '',
     search: '../image/check.png',
     meng: '../image/meng1.png',
     meng1: '../image/memg.png',
+    right: '../image/right.png',
     // food: [],
     // summary: [],
-    reminder: ''
+    reminder: '',
+    star: '../image/memg1.png'
   }
   methods = {
     son() {
@@ -192,6 +189,11 @@ export default class Show extends wepy.page {
       } else {
         self.star = '../image/meng1.png'
       }
+    },
+    past() {
+      wepy.navigateTo({
+        url: './search1'
+      })
     }
   }
   onLoad() {

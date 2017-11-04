@@ -1,6 +1,6 @@
 
 <view>
-  <view bindtap="son" class="background">
+  <view class="background" bindtap="past">
     <view bindtap="son" class="section">
       <input style="align-items: center; justify-content: flex-start;" placeholder="搜索菜谱、食材" focus="{{focus}}" config-type="search" class="input"/>
       <image class="photo" src="{{search}}"/>
@@ -13,7 +13,7 @@
     <text style="font-size: 14px">{{content.recView}}</text>
   </view>
 
-  <view class="text" style="height: 60px; flex-direction: row;">
+  <view class="text" style="height: 60px; flex-direction: row; font-size: 13px;">
     <text>{{content.recDescribe}}</text>
   </view>
 
@@ -24,7 +24,7 @@
 
   <text class="sweetheart">_食材用料明细_</text>
 
-  <view class="text" style="height: 20px;"  wx:for="{{content.food}}" wx:key="index">
+  <view class="text" style="height: 20px; font-size: 13px;"  wx:for="{{content.food}}" wx:key="index ">
     <view class="between">
       <text>{{item.materials}}</text>
       <text>{{item.conversion}}</text>
@@ -34,8 +34,9 @@
   <text class="sweetheart">·制作步骤·</text>
 
   <view class="column"  wx:for="{{content.summary}}" wx:key="index" data-index="{{index}}">
-    <image class="atlas" src="{{item.artist}}"/>
     <text class="essay">{{item.character}}</text>
+    <image class="photo" style="margin-top:10px;height:20px;margin-bottom:5px;" src="{{right}}"/>
+    <image class="atlas" src="{{item.artist}}"/>
   </view>
 
   <text class="sweetheart">/温馨小贴士/</text>
@@ -44,7 +45,7 @@
 
   <view class="pattern">
     <view style=" display:flex;justify-content: row;">
-      <image bindtap="star" class="photo" src="{{collect ? '../image/meng.png' : star}}"/>
+      <image bindtap="star" style="width:35px;" class="photo" src="{{collect ? '../image/meng1.png' : star}}"/>
       <text style=" display:flex; justify-content:center; align-items: center;">收藏菜谱</text>
     </view>  
   </view>

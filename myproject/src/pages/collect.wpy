@@ -43,7 +43,7 @@
 <template>
 <view>
   <view class="border">
-    <view class="background">
+    <view class="background" @tap="past">
         <view class="section">
           <input placeholder="搜索" focus="{{focus}}" config-type="search" class="input" />
         </view>
@@ -65,7 +65,11 @@ export default class Index extends wepy.page {
     search: '../image/check.png'
   }
   methods = {
-
+    past() {
+      wepy.navigateTo({
+        url: './search1'
+      })
+    }
   }
   onLoad() { }
 }

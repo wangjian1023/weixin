@@ -277,16 +277,22 @@ export default class Index extends wepy.page {
     },
     past() {
       wepy.navigateTo({
-        url: './search'
+        url: './search1'
       })
     },
     display(e) {
       let self = this
-      let item = self.content[e.currentTarget.id]
-      console.log(item)
+      console.log(e)
+      const item = self.content[e.currentTarget.id]
+      console.log(item, 'item-id')
+      try {
+        wepy.setStorageSync('content', item)
+      } catch (e) {
+      }
       wepy.navigateTo({
-        url: `./display?recPhoto=${item.recPhoto}&recName=${item.recName}&recDescribe=${item.recDescribe}&recView=${item.recView}`
+        url: './display'
       })
+      console.log(item, 'content[item]')
     }
   }
   onLoad() {
