@@ -21,15 +21,48 @@
       </view>
     </view>
 
-    <!-- <view class="wonder" style="display:flex;">
+    <view class="wonder" style="display:flex;">
       <text>时间</text>
       <view class="section" style="color:red">
-          <picker bindchange="bindPickerChange" value="{{time}}" range="{{arr}}">
+          <picker bindchange="bindMultiPickerChange" value="{{time}}" range="{{arr}}">
             <view class="picker">
             必选：{{arr[time]}}
             </view>
         </picker>
       </view>
-    </view> -->
+    </view>
 
+    <view class="disk">
+      <image class="leder" src="{{yes}}"/>
+      <text>菜谱分类</text>
+    </view>
+
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio"  wx:for="{{items}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </radio-group>
+
+    <view class="disk">
+      <image class="leder" src="{{yes}}"/>
+      <text>食材用料明细</text>
+    </view>
+
+    <view class="text" style="height: 20px; font-size: 13px;"  wx:for="{{content.food}}" wx:key="index ">
+      <view class="between">
+        <text>{{item.materials}}</text>
+        <text>{{item.conversion}}</text>
+      </view>
+    </view>
+
+    <view class="disk">
+      <image class="leder" src="{{yes}}"/>
+      <text>步骤</text>
+    </view>
+
+<block wx:for="{{lists}}" wx:key="{{index}}">  
+  <input class="create-li" data-id="{{index}}" placeholder="选项" bindinput="bindKeyInput"/>  
+</block>   
+<button class="add-li" bindtap="addList">添加选项</button>  
+<button class="add-li" bindtap="delList">删除选项</button> 
   </view>

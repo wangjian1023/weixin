@@ -32,3 +32,29 @@
   display: flex;
   width: 100%;
 }
+.disk {
+  display: flex;
+  margin: 30px 10px 10px 10px;
+  width: 100%;
+  flex-direction: row;
+
+}
+.leder {
+  display: flex;
+  height: 25px;
+  width: 25px;
+}
+.radio .wx-radio-input {
+  -webkit-appearance:none;
+  outline:0;
+  background-color:#ffffff;
+  position:relative;
+  height:22px;
+  width:22px;
+  border-radius:20%;
+  border:1px solid #D1D1D1;
+}
+.radio-group {
+  display:block;
+  margin: 0px 10px;
+}
