@@ -145,7 +145,7 @@
 
   <view class="pattern">
     <view style=" display:flex;justify-content: row;">
-      <image @tap ="star" style="width:35px;" class="photo" src="{{collect ? '../image/meng1.png' : star}}" ></image>
+      <image @tap ="star" style="width:35px;" class="photo" src="{{collect ? '../image/meng.png' : star}}" ></image>
       <text style=" display:flex; justify-content:center; align-items: center;">收藏菜谱</text>
     </view>  
   </view>
@@ -173,7 +173,7 @@ export default class Show extends wepy.page {
     // food: [],
     // summary: [],
     reminder: '',
-    star: '../image/memg1.png'
+    star: '../image/memg.png'
   }
   methods = {
     son() {

@@ -58,6 +58,34 @@
   display:block;
   margin: 0px 10px;
 }
+.line {
+  display: flex;
+  border-bottom: 1px solid gray;
+  font-size: 15px;
+  width: 150px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+.add-li {
+  display: flex;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  height: 30px;
+  font-size: 15px;
+  width: 40%;
+  margin-top: 10px;
+}
+
+.radio-group {
+  display: block;
+  margin: 0px 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 </style>
 
 <template>
@@ -88,7 +116,7 @@
       <view class="section" style="color:red">
           <picker bindchange="bindMultiPickerChange" value="{{time}}" range="{{arr}}">
             <view class="picker">
-            必选：{{arr[time]}}
+            必选：{{arr[index1]}}
             </view>
         </picker>
       </view>
@@ -110,11 +138,21 @@
       <text>食材用料明细</text>
     </view>
 
-    <view class="text" style="height: 20px; font-size: 13px;"  wx:for="{{content.food}}" wx:key="index ">
-      <view class="between">
-        <text >{{item.materials}}</text>
-        <text >{{item.conversion}}</text>
+    <view class="row">
+      <view>
+        <block wx:for="{{lists}}" wx:key="index" style="display: flex; flex-direction: column">  
+          <input class='create-li line' data-id="{{index}}" placeholder="材料名，如牛肉"  bindinput='bindKeyInput'></input>   
+        </block>
       </view>
+      <view>
+        <block wx:for="{{lists}}" wx:key="index" style="display: flex; flex-direction: column">  
+          <input class='create-li line' data-id="{{index}}" placeholder="数量 如100g"  bindinput='bindKeyInput'></input>   
+        </block>
+      </view>
+    </view>
+    <view class="row">
+    <button style="display: flex; justify-content: center; align-items: center;" class='add-li' bindtap='addList'>添加食材</button>  
+    <button style="display: flex; justify-content: center; align-items: center;" class='add-li' bindtap='delList'>减少食材</button> 
     </view>
 
     <view class="disk">
@@ -122,11 +160,20 @@
       <text>步骤</text>
     </view>
 
-<block wx:for="{{lists}}" wx:key="{{index}}">  
-  <input class='create-li' data-id="{{index}}" placeholder="选项"  bindinput='bindKeyInput'></input>  
-</block>   
-<button class='add-li' bindtap='addList'>添加选项</button>  
-<button class='add-li' bindtap='delList'>删除选项</button> 
+    <!-- <view wx:for="{{items}}" wx:for-item="name" wx:for-index="id">
+      {{id}}: {{name.one}}
+    </view> -->
+    <view>
+        <block wx:for="{{lists1}}" wx:key="index" style="display: flex; flex-direction: column">  
+          <input class='create-li line' data-id="{{index}}" placeholder="材料名，如牛肉"  bindinput='bindKeyInput'></input>   
+        </block>
+    </view>
+
+    <view class="row">
+    <button style="display: flex; justify-content: center; align-items: center;" class='add-li' bindtap='addList1'>添加步骤</button>  
+    <button style="display: flex; justify-content: center; align-items: center;" class='add-li' bindtap='delList1'>减少步骤</button> 
+    </view>
+
   </view>
 </template>
 
@@ -142,7 +189,8 @@ export default class Take extends wepy.page {
     src: '',
     add: '../image/add.png',
     yes: '../image/yes.png',
-    lists: [{}, {}],
+    lists: [{}],
+    lists1: [{}],
     checkbox: [],
     array: ['初级', '中级', '高级', '神级'],
     objectArray: [
@@ -164,6 +212,7 @@ export default class Take extends wepy.page {
       }
     ],
     index: 0,
+    index1: 0,
     time: 0,
     arr: ['五分钟', '十五分钟', '半小时', '一小时', '两小时'],
     objectArr: [
@@ -190,7 +239,7 @@ export default class Take extends wepy.page {
     ],
     items: [
       {name: 'USA', value: '鲁菜'},
-      {name: 'CHN', value: '川菜', checked: 'true'},
+      {name: 'CHN', value: '川菜'},
       {name: 'BRA', value: '粤菜'},
       {name: 'JPN', value: '浙菜'},
       {name: 'ENG', value: '湘菜'},
@@ -212,29 +261,63 @@ export default class Take extends wepy.page {
     bindMultiPickerChange: function(e) {
       let self = this
       console.log('picker发送选择改变，携带值为', e.detail.value)
-      self.index = e.detail.value
+      self.index1 = e.detail.value
       self.setData({
-        multiIndex: e.detail.value
+        index1: e.detail.value
       })
     },
     radioChange: function(e) {
       console.log('radio发生change事件，携带value值为：', e.detail.value)
     },
     addList: function() {
-    var lists = this. data. lists;
-    var newData = {};  
-    lists.push(newData);//实质是添加lists数组内容，使for循环多一次  
-    this.setData({  
-      lists: lists,  
-    })    
-  },  
-  delList: function () {  
-    var lists = this.data.lists;  
-    lists.pop();      //实质是删除lists数组内容，使for循环少一次  
-    this.setData({  
-      lists: lists,  
-    })  
-  }
+      var lists = this.data.lists
+      var newData = {}
+      lists.push(newData) // 实质是添加lists数组内容，使for循环多一次
+      this.setData({
+        lists: lists
+      })
+    },
+    delList: function () {
+      var lists = this.data.lists
+      console.log(this.data.lists, 'aaaaaaaaa')
+      lists.pop() // 实质是删除lists数组内容，使for循环少一次
+      this.setData({
+        lists: lists
+      })
+    },
+    addList1: function() {
+      var lists = this.data.lists1
+      var newData = {}
+      lists.push(newData) // 实质是添加lists数组内容，使for循环多一次
+      this.setData({
+        lists1: lists
+      })
+    },
+    delList1: function () {
+      var lists = this.data.lists1
+      console.log(this.data.lists, 'aaaaaaaaa')
+      lists.pop() // 实质是删除lists数组内容，使for循环少一次
+      this.setData({
+        lists1: lists
+      })
+    },
+    tap() {
+      let self = this
+      wepy.chooseImage({
+        count: 1, // 默认9
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function(res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          let arr = self.src
+          let a = arr.concat(res.tempFilePaths)
+          self.src = a
+          self.setData({
+            src: a
+          })
+        }
+      })
+    }
   }
   onLoad() {
     let self = this

@@ -45,7 +45,7 @@
 
   <view class="pattern">
     <view style=" display:flex;justify-content: row;">
-      <image bindtap="star" style="width:35px;" class="photo" src="{{collect ? '../image/meng1.png' : star}}"/>
+      <image bindtap="star" style="width:35px;" class="photo" src="{{collect ? '../image/meng.png' : star}}"/>
       <text style=" display:flex; justify-content:center; align-items: center;">收藏菜谱</text>
     </view>  
   </view>

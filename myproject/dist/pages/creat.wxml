@@ -26,7 +26,7 @@
       <view class="section" style="color:red">
           <picker bindchange="bindMultiPickerChange" value="{{time}}" range="{{arr}}">
             <view class="picker">
-            必选：{{arr[time]}}
+            必选：{{arr[index1]}}
             </view>
         </picker>
       </view>
@@ -48,11 +48,21 @@
       <text>食材用料明细</text>
     </view>
 
-    <view class="text" style="height: 20px; font-size: 13px;"  wx:for="{{content.food}}" wx:key="index ">
-      <view class="between">
-        <text>{{item.materials}}</text>
-        <text>{{item.conversion}}</text>
+    <view class="row">
+      <view>
+        <block  wx:for="{{lists}}" wx:key="index" style="display: flex; flex-direction: column">  
+          <input class="create-li line" data-id="{{index}}" placeholder="材料名，如牛肉" bindinput="bindKeyInput"/>   
+        </block>
       </view>
+      <view>
+        <block wx:for="{{lists}}" wx:key="index" style="display: flex; flex-direction: column">  
+          <input class="create-li line" data-id="{{index}}" placeholder="数量 如100g" bindinput="bindKeyInput"/>   
+        </block>
+      </view>
+    </view>
+    <view class="row">
+    <button style="display: flex; justify-content: center; align-items: center;" class="add-li" bindtap="addList">添加食材</button>  
+    <button style="display: flex; justify-content: center; align-items: center;" class="add-li" bindtap="delList">减少食材</button> 
     </view>
 
     <view class="disk">
@@ -60,9 +70,18 @@
       <text>步骤</text>
     </view>
 
-<block wx:for="{{lists}}" wx:key="{{index}}">  
-  <input class="create-li" data-id="{{index}}" placeholder="选项" bindinput="bindKeyInput"/>  
-</block>   
-<button class="add-li" bindtap="addList">添加选项</button>  
-<button class="add-li" bindtap="delList">删除选项</button> 
+    <!-- <view wx:for="{{items}}" wx:for-item="name" wx:for-index="id">
+      {{id}}: {{name.one}}
+    </view> -->
+    <view>
+        <block wx:for="{{lists1}}" wx:key="index" style="display: flex; flex-direction: column">  
+          <input class="create-li line" data-id="{{index}}" placeholder="材料名，如牛肉" bindinput="bindKeyInput"/>   
+        </block>
+    </view>
+
+    <view class="row">
+    <button style="display: flex; justify-content: center; align-items: center;" class="add-li" bindtap="addList1">添加步骤</button>  
+    <button style="display: flex; justify-content: center; align-items: center;" class="add-li" bindtap="delList1">减少步骤</button> 
+    </view>
+
   </view>

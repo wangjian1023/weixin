@@ -58,3 +58,31 @@
   display:block;
   margin: 0px 10px;
 }
+.line {
+  display: flex;
+  border-bottom: 1px solid gray;
+  font-size: 15px;
+  width: 150px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+.add-li {
+  display: flex;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  height: 30px;
+  font-size: 15px;
+  width: 40%;
+  margin-top: 10px;
+}
+
+.radio-group {
+  display: block;
+  margin: 0px 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

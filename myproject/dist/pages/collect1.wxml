@@ -1,7 +1,7 @@
 
 <view>
   <view class="border">
-    <view class="background">
+    <view class="background" bindtap="past">
         <view class="section">
           <input placeholder="搜索" focus="{{focus}}" config-type="search" class="input"/>
         </view>
