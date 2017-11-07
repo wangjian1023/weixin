@@ -11,8 +11,8 @@
   font-size: 15px;
 }
 .photo {
-  height: 70px;
-  width: 70px;
+  height: 100px;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,6 +39,13 @@
   flex-direction: row;
 
 }
+.button {
+  height: 5rem;
+  width: 5rem;
+  border: 1px solid grey;
+  border-radius: 7px;
+}
+
 .leder {
   display: flex;
   height: 25px;
@@ -60,7 +67,7 @@
 }
 .line {
   display: flex;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px dotted gray;
   font-size: 15px;
   width: 150px;
 }
@@ -86,15 +93,39 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
+.image {
+  height: 13rem;
+  width: 100%;
+  position: relative;
+  top: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent
+}
 </style>
 
 <template>
   <view>
     <view class="border">
-      <view style="display:flex; align-items: center; justify-content: center;height:100px; flex-direction: column;">
-        <image class="photo" src="{{add}}"></image>
-        <text class="text">点击上传封面图</text>
+      <view @tap="boomtap">
+        <image class="image" mode="scaleToFill" src="{{src}}" ></image>
       </view>
+
+    <!-- <view class="upPhoto">
+      <block wx:for="{{src}}">
+        <view @tap="viewImg">
+          <image class="image" mode="scaleToFill" src="{{item}}" ></image>
+        </view>
+      </block>
+      <view class="button" @tap="ButtonTap">
+        <image class="image-button" src="{{buttonUp}}" />
+      </view>  孙
+    </view>   -->
+
     </view>
     <view class="wonder">
       <input placeholder="菜谱标题.." maxlength = "20" class="input"/>
@@ -102,7 +133,7 @@
 
     <view class="wonder" style="display:flex;">
       <text>难度</text>
-      <view class="section" style="color:red">
+      <view class="section" style="color:gray">
           <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
             <view class="picker">
             必选：{{array[index]}}
@@ -113,7 +144,7 @@
 
     <view class="wonder" style="display:flex;">
       <text>时间</text>
-      <view class="section" style="color:red">
+      <view class="section" style="color:gray">
           <picker bindchange="bindMultiPickerChange" value="{{time}}" range="{{arr}}">
             <view class="picker">
             必选：{{arr[index1]}}
@@ -160,12 +191,11 @@
       <text>步骤</text>
     </view>
 
-    <!-- <view wx:for="{{items}}" wx:for-item="name" wx:for-index="id">
-      {{id}}: {{name.one}}
-    </view> -->
     <view>
-        <block wx:for="{{lists1}}" wx:key="index" style="display: flex; flex-direction: column">  
-          <input class='create-li line' data-id="{{index}}" placeholder="材料名，如牛肉"  bindinput='bindKeyInput'></input>   
+        <block wx:for="{{lists1}}" wx:key="index" style="display: flex;">
+          <text id="index">{{index+1}}</text>
+          <image class="button" src="{{sub}}" wx:key="index" @tap="bottomtap"></image>
+          <input class='create-li line' data-id="{{index}}" placeholder="添加步骤说明"  bindinput='bindKeyInput'></input>
         </block>
     </view>
 
@@ -186,8 +216,9 @@ export default class Take extends wepy.page {
   data = {
     height: 0,
     width: 0,
-    src: '',
-    add: '../image/add.png',
+    sub: [],
+    men: '',
+    src: '../image/jietu.png',
     yes: '../image/yes.png',
     lists: [{}],
     lists1: [{}],
@@ -295,29 +326,42 @@ export default class Take extends wepy.page {
     },
     delList1: function () {
       var lists = this.data.lists1
-      console.log(this.data.lists, 'aaaaaaaaa')
-      lists.pop() // 实质是删除lists数组内容，使for循环少一次
+      lists.pop()
       this.setData({
         lists1: lists
       })
     },
-    tap() {
+    boomtap() {
       let self = this
       wepy.chooseImage({
-        count: 1, // 默认9
-        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        count: 3, // 默认9
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
         success: function(res) {
-          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-          let arr = self.src
-          let a = arr.concat(res.tempFilePaths)
-          self.src = a
+          self.src = res.tempFilePaths[0]
           self.setData({
-            src: a
+            src: res.tempFilePaths[0]
+          })
+        }
+      })
+    },
+    bottomtap() {
+      let self = this
+      wepy.chooseImage({
+        count: 3, // 默认9
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
+        success: function(res) {
+          let men = self.sub
+          let image = men.concat(res.tempFilePaths)
+          self.sub = image
+          self.setData({
+            sub: image
           })
         }
       })
     }
+
   }
   onLoad() {
     let self = this
