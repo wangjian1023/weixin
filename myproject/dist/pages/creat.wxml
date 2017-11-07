@@ -1,10 +1,21 @@
 
   <view>
     <view class="border">
-      <view style="display:flex; align-items: center; justify-content: center;height:100px; flex-direction: column;">
-        <image class="photo" src="{{add}}"/>
-        <text class="text">点击上传封面图</text>
+      <view bindtap="boomtap">
+        <image class="image" mode="scaleToFill" src="{{src}}"/>
       </view>
+
+    <!-- <view class="upPhoto">
+      <block wx:for="{{src}}">
+        <view bindtap="viewImg">
+          <image class="image" mode="scaleToFill" src="{{item}}" ></image>
+        </view>
+      </block>
+      <view class="button" bindtap="ButtonTap">
+        <image class="image-button" src="{{buttonUp}}" />
+      </view>  孙
+    </view>   -->
+
     </view>
     <view class="wonder">
       <input placeholder="菜谱标题.." maxlength="20" class="input"/>
@@ -12,7 +23,7 @@
 
     <view class="wonder" style="display:flex;">
       <text>难度</text>
-      <view class="section" style="color:red">
+      <view class="section" style="color:gray">
           <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
             <view class="picker">
             必选：{{array[index]}}
@@ -23,7 +34,7 @@
 
     <view class="wonder" style="display:flex;">
       <text>时间</text>
-      <view class="section" style="color:red">
+      <view class="section" style="color:gray">
           <picker bindchange="bindMultiPickerChange" value="{{time}}" range="{{arr}}">
             <view class="picker">
             必选：{{arr[index1]}}
@@ -70,12 +81,11 @@
       <text>步骤</text>
     </view>
 
-    <!-- <view wx:for="{{items}}" wx:for-item="name" wx:for-index="id">
-      {{id}}: {{name.one}}
-    </view> -->
     <view>
-        <block wx:for="{{lists1}}" wx:key="index" style="display: flex; flex-direction: column">  
-          <input class="create-li line" data-id="{{index}}" placeholder="材料名，如牛肉" bindinput="bindKeyInput"/>   
+        <block wx:for="{{lists1}}" wx:key="index" style="display: flex;">
+          <text id="index">{{index+1}}</text>
+          <image class="button" src="{{sub}}" wx:key="index" bindtap="bottomtap"/>
+          <input class="create-li line" data-id="{{index}}" placeholder="添加步骤说明" bindinput="bindKeyInput"/>
         </block>
     </view>
 
