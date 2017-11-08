@@ -35,7 +35,6 @@
 .disk {
   display: flex;
   margin: 30px 10px 10px 10px;
-  width: 100%;
   flex-direction: row;
 
 }
@@ -43,7 +42,7 @@
   height: 5rem;
   width: 5rem;
   border: 1px solid grey;
-  border-radius: 7px;
+  border-radius: 10px;
 }
 
 .leder {
@@ -67,7 +66,7 @@
 }
 .line {
   display: flex;
-  border-bottom: 1px dotted gray;
+  border-bottom: 1px solid gray;
   font-size: 15px;
   width: 150px;
 }
@@ -101,6 +100,26 @@
   top: 0;
 }
 
+.frame {
+  display: flex;
+  border: 1px solid white;
+  height: 90px;
+  width: 60%;
+}
+.structure {
+  display: flex;
+  height: 30px;
+  width: 80%;
+  margin: 20px 10px;
+  border-radius: 15px;
+  border: 1px solid #FF3333;
+  background-color: #FF3333;
+  color: #F8F8F8;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -114,17 +133,6 @@
       <view @tap="boomtap">
         <image class="image" mode="scaleToFill" src="{{src}}" ></image>
       </view>
-
-    <!-- <view class="upPhoto">
-      <block wx:for="{{src}}">
-        <view @tap="viewImg">
-          <image class="image" mode="scaleToFill" src="{{item}}" ></image>
-        </view>
-      </block>
-      <view class="button" @tap="ButtonTap">
-        <image class="image-button" src="{{buttonUp}}" />
-      </view>  孙
-    </view>   -->
 
     </view>
     <view class="wonder">
@@ -172,12 +180,12 @@
     <view class="row">
       <view>
         <block wx:for="{{lists}}" wx:key="index" style="display: flex; flex-direction: column">  
-          <input class='create-li line' data-id="{{index}}" placeholder="材料名，如牛肉"  bindinput='bindKeyInput'></input>   
+          <input class='create-li line' data-id="{{index}}" maxlength="8" placeholder="材料名，如牛肉"  bindinput='bindKeyInput'></input>   
         </block>
       </view>
       <view>
         <block wx:for="{{lists}}" wx:key="index" style="display: flex; flex-direction: column">  
-          <input class='create-li line' data-id="{{index}}" placeholder="数量 如100g"  bindinput='bindKeyInput'></input>   
+          <input class='create-li line' data-id="{{index}}" maxlength="9" placeholder="数量 如100g"  bindinput='bindKeyInput'></input>   
         </block>
       </view>
     </view>
@@ -191,17 +199,24 @@
       <text>步骤</text>
     </view>
 
-    <view>
-        <block wx:for="{{lists1}}" wx:key="index" style="display: flex;">
-          <text id="index">{{index+1}}</text>
-          <image class="button" src="{{sub}}" wx:key="index" @tap="bottomtap"></image>
-          <input class='create-li line' data-id="{{index}}" placeholder="添加步骤说明"  bindinput='bindKeyInput'></input>
-        </block>
-    </view>
+    <view style="display: flex; flex-direction: column;">
+      <view style="display:flex; margin:5px 0px;flex-direction: column;">
+          <block wx:for="{{lists1}}" wx:key="index" style="display: flex; flex-direction: column">
+            <view  style="display: flex; justify-content: space-around; margin:5px 0px;">
+            <text id="index">{{index+1}}.</text>
+            <image class="button" src="{{item.sub}}" id="{{index}}" @tap="bottomtap" ></image>
+            <textarea class='create-li frame' data-id="{{index}}" maxlength="80" style="font-size:15px;" placeholder="添加步骤说明"></textarea>
+            </view>
+          </block>
+      </view>
+    </view>  
 
     <view class="row">
-    <button style="display: flex; justify-content: center; align-items: center;" class='add-li' bindtap='addList1'>添加步骤</button>  
-    <button style="display: flex; justify-content: center; align-items: center;" class='add-li' bindtap='delList1'>减少步骤</button> 
+      <button style="display: flex; justify-content: center; align-items: center;" class='add-li' bindtap='addList1'>添加步骤</button>  
+      <button style="display: flex; justify-content: center; align-items: center;" class='add-li' bindtap='delList1'>减少步骤</button> 
+    </view>
+    <view style="display:flex; justify-content: center; align-items: center;">
+      <view class="structure">发布菜谱</view>
     </view>
 
   </view>
@@ -318,11 +333,13 @@ export default class Take extends wepy.page {
     },
     addList1: function() {
       var lists = this.data.lists1
+      console.log(this.data.lists1, 'lists11111111')
       var newData = {}
       lists.push(newData) // 实质是添加lists数组内容，使for循环多一次
       this.setData({
         lists1: lists
       })
+      console.log(this.lists1, '22222222222')
     },
     delList1: function () {
       var lists = this.data.lists1
@@ -334,7 +351,7 @@ export default class Take extends wepy.page {
     boomtap() {
       let self = this
       wepy.chooseImage({
-        count: 3, // 默认9
+        count: 1, // 默认9
         sizeType: ['original', 'compressed'],
         sourceType: ['album', 'camera'],
         success: function(res) {
@@ -345,18 +362,19 @@ export default class Take extends wepy.page {
         }
       })
     },
-    bottomtap() {
+    bottomtap(e) {
       let self = this
+      let index = e.currentTarget.id
       wepy.chooseImage({
-        count: 3, // 默认9
+        count: 1, // 默认9
         sizeType: ['original', 'compressed'],
         sourceType: ['album', 'camera'],
         success: function(res) {
           let men = self.sub
           let image = men.concat(res.tempFilePaths)
-          self.sub = image
+          self.lists1[index].sub = image
           self.setData({
-            sub: image
+            lists1: self.lists1
           })
         }
       })

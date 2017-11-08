@@ -5,17 +5,6 @@
         <image class="image" mode="scaleToFill" src="{{src}}"/>
       </view>
 
-    <!-- <view class="upPhoto">
-      <block wx:for="{{src}}">
-        <view bindtap="viewImg">
-          <image class="image" mode="scaleToFill" src="{{item}}" ></image>
-        </view>
-      </block>
-      <view class="button" bindtap="ButtonTap">
-        <image class="image-button" src="{{buttonUp}}" />
-      </view>  孙
-    </view>   -->
-
     </view>
     <view class="wonder">
       <input placeholder="菜谱标题.." maxlength="20" class="input"/>
@@ -62,12 +51,12 @@
     <view class="row">
       <view>
         <block  wx:for="{{lists}}" wx:key="index" style="display: flex; flex-direction: column">  
-          <input class="create-li line" data-id="{{index}}" placeholder="材料名，如牛肉" bindinput="bindKeyInput"/>   
+          <input class="create-li line" data-id="{{index}}" maxlength="8" placeholder="材料名，如牛肉" bindinput="bindKeyInput"/>   
         </block>
       </view>
       <view>
         <block wx:for="{{lists}}" wx:key="index" style="display: flex; flex-direction: column">  
-          <input class="create-li line" data-id="{{index}}" placeholder="数量 如100g" bindinput="bindKeyInput"/>   
+          <input class="create-li line" data-id="{{index}}" maxlength="9" placeholder="数量 如100g" bindinput="bindKeyInput"/>   
         </block>
       </view>
     </view>
@@ -81,17 +70,24 @@
       <text>步骤</text>
     </view>
 
-    <view>
-        <block wx:for="{{lists1}}" wx:key="index" style="display: flex;">
-          <text id="index">{{index+1}}</text>
-          <image class="button" src="{{sub}}" wx:key="index" bindtap="bottomtap"/>
-          <input class="create-li line" data-id="{{index}}" placeholder="添加步骤说明" bindinput="bindKeyInput"/>
-        </block>
-    </view>
+    <view style="display: flex; flex-direction: column;">
+      <view style="display:flex; margin:5px 0px;flex-direction: column;">
+          <block wx:for="{{lists1}}" wx:key="index" style="display: flex; flex-direction: column">
+            <view style="display: flex; justify-content: space-around; margin:5px 0px;">
+            <text id="index">{{index+1}}.</text>
+            <image class="button" src="{{item.sub}}" id="{{index}}" bindtap="bottomtap"/>
+            <textarea class="create-li frame" data-id="{{index}}" maxlength="80" style="font-size:15px;" placeholder="添加步骤说明"/>
+            </view>
+          </block>
+      </view>
+    </view>  
 
     <view class="row">
-    <button style="display: flex; justify-content: center; align-items: center;" class="add-li" bindtap="addList1">添加步骤</button>  
-    <button style="display: flex; justify-content: center; align-items: center;" class="add-li" bindtap="delList1">减少步骤</button> 
+      <button style="display: flex; justify-content: center; align-items: center;" class="add-li" bindtap="addList1">添加步骤</button>  
+      <button style="display: flex; justify-content: center; align-items: center;" class="add-li" bindtap="delList1">减少步骤</button> 
+    </view>
+    <view style="display:flex; justify-content: center; align-items: center;">
+      <view class="structure">发布菜谱</view>
     </view>
 
   </view>

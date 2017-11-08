@@ -35,7 +35,6 @@
 .disk {
   display: flex;
   margin: 30px 10px 10px 10px;
-  width: 100%;
   flex-direction: row;
 
 }
@@ -43,7 +42,7 @@
   height: 5rem;
   width: 5rem;
   border: 1px solid grey;
-  border-radius: 7px;
+  border-radius: 10px;
 }
 
 .leder {
@@ -67,7 +66,7 @@
 }
 .line {
   display: flex;
-  border-bottom: 1px dotted gray;
+  border-bottom: 1px solid gray;
   font-size: 15px;
   width: 150px;
 }
@@ -99,6 +98,26 @@
   width: 100%;
   position: relative;
   top: 0;
+}
+
+.frame {
+  display: flex;
+  border: 1px solid white;
+  height: 90px;
+  width: 60%;
+}
+.structure {
+  display: flex;
+  height: 30px;
+  width: 80%;
+  margin: 20px 10px;
+  border-radius: 15px;
+  border: 1px solid #FF3333;
+  background-color: #FF3333;
+  color: #F8F8F8;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
 }
 
 ::-webkit-scrollbar {

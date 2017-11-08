@@ -1,5 +1,5 @@
 
-<view>
+<view style="height: {{height}}px;">
   <view class="background">
     <view bindtap="past" class="section">
       <input placeholder="搜索菜名或菜谱" focus="{{focus}}" config-type="search" class="input"/>
@@ -22,11 +22,11 @@
   </view>
 
   <view class="border">
-      <view bindtap="like" class="column six" style="background-color:#b8b10e">
+      <view bindtap="like" class="column six" style="background-color:#FFCC99">
         <image class="photo" src="{{time}}"/>
         <text>最新菜谱</text>
       </view>
-      <view bindtap="favourite" class="column six" style="background-color:#FF9933">
+      <view bindtap="favourite" class="column six" style="background-color:#FF99FF">
         <image class="photo" src="{{hot}}"/>
         <text>最热菜谱</text>
       </view>
